@@ -1,0 +1,25 @@
+#LIBRO
+#Titulo-------Editorial-----FechaPub-----ExMin-----Precio
+POO *Javeriana *2012-09-30 *20 *50000
+#Autores
+#nombre----------nacionalidad---------fechaNacimiento
+Angela Carrillo *Colombiana *01-01-1974
+Consuelo Franky *Colombiana *10-06-1964
+Hervé Martin *Francesa *01-04-1958
+0
+#LIBRO
+#Titulo-------Editorial-----FechaPub-----ExMin-----Precio
+El coronel no tiene quien le escriba *Oveja Negra *2000-05-09 *5 *25000
+#Autores
+#nombre----------nacionalidad
+Gabriel García Marquez *Colombiana *06-03-1927
+0
+#LIBRO
+#Titulo-------Editorial-----FechaPub-----ExMin-----Precio
+Pedro Páramo *Oveja Negra *2005-12-13 *10 *20000
+#Autores
+#nombre----------nacionalidad
+Juan Rulfo *Mexicana *16-05-1917
+0
+#FIN
+ 
