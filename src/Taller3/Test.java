@@ -49,11 +49,35 @@ public class Test {
                     break;
                 }
                 case 4: {
+                    ent.nextLine();
+                    System.out.println("Ingrese el titulo del libro: ");
+                    String titulo = ent.nextLine();
+
+                    try
+                    {
+                        lib.verificarExistencia(titulo);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
 
 
                     break;
                 }
                 case 5: {
+                    ent.nextLine();
+                    System.out.println("Ingrese el titulo del libro: ");
+                    String titulo = ent.nextLine();
+
+                    try
+                    {
+                        lib.buscarAutores(titulo);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
 
                     break;
                 }

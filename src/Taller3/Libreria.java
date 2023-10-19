@@ -44,20 +44,26 @@ public class Libreria {
     }
 
 
-    public void verificarExistencia(String titulo) throws LibreriaExc {
+    public int[] verificarExistencia(String titulo) throws LibreriaExc {
         boolean encontrado = false;
+
+        int[] existencias = new int[2];
         for(Libro l: libros)
         {
             if(l.getTitulo().equalsIgnoreCase(titulo))
             {
                 encontrado = true;
-                System.out.println("Existencias Min: " + l.getExistenciaMin() + "\nExistencia Actual: " + l.getExistenciaAct());
+                existencias[0] = l.getExistenciaMin();
+                existencias[1] = l.getExistenciaAct();
+
             }
         }
         if(!encontrado)
         {
             throw new LibreriaExc(titulo + " No encontrado");
         }
+
+        return existencias;
     }
 
     public void buscarAutores(String titulo) throws LibreriaExc
