@@ -1,9 +1,6 @@
 package Taller3;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Date;
 
 public class ManejadorArchivos {
@@ -94,5 +91,38 @@ public class ManejadorArchivos {
             e.printStackTrace();
         }
 
+    }
+
+    public static Libreria cargarDeArchivo(String nomArch)
+    {
+        Libreria lib = null;
+        try{
+            FileInputStream fileIn = new FileInputStream(nomArch);
+            ObjectInputStream in =  new ObjectInputStream(fileIn);
+            lib = (Libreria) in.readObject();
+        }
+        catch (IOException e)
+        {
+            System.out.println("El archivo no existe:" + e);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Ocurrio un error:" + e);
+        }
+        return lib;
+    }
+
+    public static void salvarAArchivo(String nomArch, Libreria lib)
+    {
+        try{
+            FileOutputStream fileOut = new FileOutputStream(nomArch);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(lib);
+            out.close();
+        }
+        catch (Exception e)
+        {
+            System.err.println(e.getMessage());
+        }
     }
 }

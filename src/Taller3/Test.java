@@ -82,6 +82,18 @@ public class Test {
                     break;
                 }
                 case 6: {
+                    ent.nextLine();
+                    System.out.println("Ingrese la nacionalidad: ");
+                    String nacionalidad = ent.nextLine();
+
+                    try
+                    {
+                        lib.consultarLibrosPorNacionalidad(nacionalidad);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
 
 
                     break;
@@ -96,12 +108,34 @@ public class Test {
                     break;
                 }
                 case 8: {
+                    ent.nextLine();
+                    System.out.println("Ingrese el nombre del autor: ");
+                    String nombre = ent.nextLine();
 
+                    try
+                    {
+                        lib.consultarLibrosDeUnAutor(nombre);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
 
                     break;
                 }
                 case 9: {
+                    ent.nextLine();
+                    System.out.println("Ingrese el titulo: ");
+                    String titulo = ent.nextLine();
 
+                    try
+                    {
+                        lib.consultarInfoLibro(titulo);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
 
                     break;
                 }
@@ -121,7 +155,22 @@ public class Test {
                     break;
                 }
                 case 13: {
-
+                    ent.nextLine();
+                    System.out.println("Ingrese lo que desea realizar: 'serializar'-'deserializar'");
+                    String res = ent.nextLine();
+                    if(res.equalsIgnoreCase("serializar")){
+                        System.out.println("Ingrese el nombre del archivo a crear");
+                        res = ent.nextLine();
+                        System.out.println("Se guardara la libreria en un archivo...");
+                        ManejadorArchivos.salvarAArchivo(res, lib);
+                    }else if(res.equalsIgnoreCase("deserializar")){
+                        System.out.println("Ingrese el nombre del archivo");
+                        res = ent.nextLine();
+                        System.out.println("Se cargara la libreria desde un archivo...");
+                        Libreria nuevoLib = ManejadorArchivos.cargarDeArchivo(res);
+                    }else{
+                        System.out.println("Ingrese correctamente la opcion");
+                    }
 
                     break;
                 }

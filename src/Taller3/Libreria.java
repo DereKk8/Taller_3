@@ -105,5 +105,75 @@ public class Libreria {
 
     }
 
+    public void consultarLibrosPorNacionalidad(String nacionalidad) throws LibreriaExc {
+        boolean encontrado = false;
+        boolean encontradolib = false;
+        for(Libro l: libros)
+        {
+            encontradolib = false;
+            List<Autor> autores = new ArrayList<>(l.getAutores());
+            for(Autor au: autores)
+            {
+                if (au.getNacionalidad().trim().equalsIgnoreCase(nacionalidad.trim())) {
+                    encontradolib = true;
+                    System.out.print(au.getNombre()+ " ");
+                }
+            }
+            if (encontradolib)
+            {
+                System.out.println("TITULO");
+                System.out.print(l.getTitulo());
+                encontrado = true;
+            }
 
+        }
+        if(!encontrado)
+        {
+            throw new LibreriaExc(nacionalidad + " No encontrado");
+        }
+    }
+
+    public void consultarLibrosDeUnAutor(String nombre) throws LibreriaExc {
+        boolean encontrado = false;
+        boolean encontradolib = false;
+        for(Libro l: libros)
+        {
+            List<Autor> autores = new ArrayList<>(l.getAutores());
+            for(Autor au: autores)
+            {
+                if (au.getNombre().trim().equalsIgnoreCase(nombre.trim())) {
+
+                    encontrado = true;
+                    System.out.println("TITULO---");
+                    System.out.print(l.getTitulo() + "\n");
+
+                    break;
+                }
+            }
+
+        }
+        if(!encontrado)
+        {
+            throw new LibreriaExc(nombre + " No encontrado");
+        }
+    }
+
+    public void consultarInfoLibro(String titulo) throws LibreriaExc
+    {
+        boolean encontrado = false;
+        for(Libro l: libros)
+        {
+            if(l.getTitulo().equalsIgnoreCase(titulo))
+            {
+                encontrado = true;
+
+                System.out.println(""+l);
+
+            }
+        }
+        if(!encontrado)
+        {
+            throw new LibreriaExc(titulo + " No encontrado");
+        }
+    }
 }
