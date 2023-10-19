@@ -1,13 +1,14 @@
 package Taller3;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Autor {
     private String nombre;
     private String nacionalidad;
-    private LocalDateTime fechaNacimiento;
+    private Date fechaNacimiento;
 
-    public Autor(String nombre, String nacionalidad, LocalDateTime fechaNacimiento) {
+    public Autor(String nombre, String nacionalidad, Date fechaNacimiento) {
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
@@ -29,11 +30,18 @@ public class Autor {
         this.nacionalidad = nacionalidad;
     }
 
-    public LocalDateTime getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Autor: %s\n Nacionalidad: %s\n Fecha de Nacimiento: %s",
+                nombre, nacionalidad, fechaNacimiento);
+    }
+
 }

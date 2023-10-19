@@ -5,12 +5,17 @@ import java.util.List;
 
 public class Libreria {
 
-    List<Libro> libros;
+    List<Libro> libros = new ArrayList<>();
 
     public Libreria(){
 
-    };
-    public Libreria(List<Libro> libros) {
-        libros = new ArrayList<>();
+    }
+
+    public List<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
     }
 }
