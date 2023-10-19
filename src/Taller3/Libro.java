@@ -103,8 +103,9 @@ public class Libro {
                         "  Autores: %s,%n" +
                         "  Editorial: '%s',%n" +
                         "  Fecha de Publicacion: %s,%n" +
+                        "  Existencias[MIN/ACT]: [%d/%d]" +
                         "  Precio: %d%n}",
-                codigo, titulo, authorsStr, editorial, fechaPublicacion, precio);
+                codigo, titulo, authorsStr, editorial, fechaPublicacion, existenciaMin, existenciaAct, precio);
     }
 
     private String formatAuthors() {

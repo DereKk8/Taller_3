@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Test {
     static int opcion = -1;
-    static Libreria libreria = new Libreria();
 
     public static void main(String[] args) {
+        Libreria lib = new Libreria();
         Scanner ent = new Scanner(System.in);
         while (opcion != 0) {
             menu();
@@ -15,12 +15,26 @@ public class Test {
                     System.out.println("Ingrese el nombre del archivo: ");
                     String nom = ent.nextLine();
 
-                    ManejadorArchivos.leerArchivoLibros(nom + ".txt");
+                    lib = ManejadorArchivos.leerArchivoLibros(nom + ".txt");
 
+                    try{
+                        lib.mostrarLibros();
+                    }catch(LibreriaExc e){
+                        System.out.println("" + e);
+                    }
                     break;
                 }
                 case 2: {
+                    System.out.println("Ingrese el nombre del archivo: ");
+                    String nom = ent.nextLine();
 
+                    ManejadorArchivos.leerArchivoPedidos(nom + ".txt", lib);
+
+                    try{
+                        lib.mostrarLibros();
+                    }catch(LibreriaExc e){
+                        System.out.println("" + e);
+                    }
 
                     break;
                 }

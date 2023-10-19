@@ -1,5 +1,0 @@
-#PEDIDOS
-#Titulo-------CantidadSolicitada
-POO               *50
-Maria             *30
-Pedro Páramo      *15

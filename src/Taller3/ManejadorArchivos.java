@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ManejadorArchivos {
@@ -28,7 +27,7 @@ public class ManejadorArchivos {
                 long precio = Long.parseLong(dato[4]);
 
                   //FUTURA ECEPCION MANEJADORCADENAS if(!= NULL)
-                Libro libro = new Libro(dato[0], dato[1],fecha, exMin, precio);
+                Libro libro = new Libro(dato[0].trim(), dato[1],fecha, exMin, precio);
                 libreria.getLibros().add(libro);
 
 
@@ -52,13 +51,6 @@ public class ManejadorArchivos {
 
             }
 
-
-            for(Libro l : libreria.getLibros()){
-                System.out.println("" + l);
-            }
-
-
-
         }catch (IOException e)
         {
             e.printStackTrace();
@@ -75,22 +67,25 @@ public class ManejadorArchivos {
             BufferedReader datos = new BufferedReader(lec);
             String linea = datos.readLine();
             linea = datos.readLine();
+            linea = datos.readLine();
 
             while(linea != null)
             {
-                linea = datos.readLine();
 
                 String[] datosPedido = ManejadorCadenas.separar(linea, "\\*");
+                linea = datos.readLine();
+
 
                 int canSolicitada = Integer.parseInt(datosPedido[1]);
 
                 for(Libro l:lib.getLibros()){
-                    if(l.getTitulo().equalsIgnoreCase(datosPedido[0])){
+                    if(l.getTitulo().equalsIgnoreCase(datosPedido[0].trim())){
+                        System.out.println("ENTRE");
                         int nuevaExistenciaMin = l.getExistenciaMin() + canSolicitada;
                         int nuevaExistenciaAct = l.getExistenciaAct() + canSolicitada;
 
                         l.setExistenciaMin(nuevaExistenciaMin);
-                        l.setExistenciaMin(nuevaExistenciaAct);
+                        l.setExistenciaAct(nuevaExistenciaAct);
                     }
                 }
 
