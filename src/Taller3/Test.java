@@ -17,11 +17,6 @@ public class Test {
 
                     lib = ManejadorArchivos.leerArchivoLibros(nom + ".txt");
 
-                    try{
-                        lib.mostrarLibros();
-                    }catch(LibreriaExc e){
-                        System.out.println("" + e);
-                    }
                     break;
                 }
                 case 2: {
@@ -30,15 +25,25 @@ public class Test {
 
                     ManejadorArchivos.leerArchivoPedidos(nom + ".txt", lib);
 
-                    try{
-                        lib.mostrarLibros();
-                    }catch(LibreriaExc e){
-                        System.out.println("" + e);
-                    }
 
                     break;
                 }
                 case 3: {
+                    ent.nextLine();
+                    System.out.println("Ingrese el titulo del libro: ");
+                    String titulo = ent.nextLine();
+                    System.out.println("Ingrese numero de unidades a comprar: ");
+                    int cant = ent.nextInt();
+
+                    try
+                    {
+                        lib.venderLibro(titulo.trim(), cant);
+                    }
+                    catch(LibreriaExc e)
+                    {
+                        System.out.println(e);
+                    }
+
 
 
                     break;
@@ -58,7 +63,11 @@ public class Test {
                     break;
                 }
                 case 7: {
-
+                    try{
+                        lib.mostrarLibros();
+                    }catch(LibreriaExc e){
+                        System.out.println("" + e);
+                    }
 
                     break;
                 }

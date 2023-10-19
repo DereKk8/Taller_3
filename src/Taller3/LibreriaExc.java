@@ -13,4 +13,5 @@ public class LibreriaExc extends Exception{
                 "detalle='" + detalle + '\'' +
                 '}';
     }
+
 }

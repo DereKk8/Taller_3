@@ -80,7 +80,6 @@ public class ManejadorArchivos {
 
                 for(Libro l:lib.getLibros()){
                     if(l.getTitulo().equalsIgnoreCase(datosPedido[0].trim())){
-                        System.out.println("ENTRE");
                         int nuevaExistenciaMin = l.getExistenciaMin() + canSolicitada;
                         int nuevaExistenciaAct = l.getExistenciaAct() + canSolicitada;
 

@@ -19,15 +19,15 @@ public class Libreria {
         this.libros = libros;
     }
 
-    public void venderLibro(String titulo, int cant) throws LibreriaExc{
+    public void venderLibro(String titulo, int cant) throws LibreriaExc {
 
             boolean encontrado = false;
             boolean disponible = false;
 
             for (Libro l : libros) {
-                if (l.getTitulo().equalsIgnoreCase(titulo) && l.getExistenciaAct() > cant) {
+                if (l.getTitulo().equalsIgnoreCase(titulo)) {
                     encontrado = true;
-                    if (l.getExistenciaAct() > cant) {
+                    if (l.getExistenciaAct() >= cant) {
                         l.setExistenciaAct(l.getExistenciaAct() - cant);
                         disponible = true;
                     }
@@ -35,12 +35,51 @@ public class Libreria {
             }
 
             if (!encontrado) {
-                throw new LibreriaExc("Libro {" + titulo + "} no encontrado");
+                throw new LibreriaExc("" + titulo + " No encontrado");
             }
-            if (!disponible) {
-                throw new LibreriaExc("no hay suficientes exitencias del libro {" + titulo + "}");
+            else if (!disponible) {
+                throw new LibreriaExc("Cantidad de " + titulo + " No disponible");
             }
 
+    }
+
+
+    public void verificarExistencia(String titulo) throws LibreriaExc {
+        boolean encontrado = false;
+        for(Libro l: libros)
+        {
+            if(l.getTitulo().equalsIgnoreCase(titulo))
+            {
+                encontrado = true;
+                System.out.println("Existencias Min: " + l.getExistenciaMin() + "\nExistencia Actual: " + l.getExistenciaAct());
+            }
+        }
+        if(!encontrado)
+        {
+            throw new LibreriaExc(titulo + " No encontrado");
+        }
+    }
+
+    public void buscarAutores(String titulo) throws LibreriaExc
+    {
+        boolean encontrado = false;
+        for(Libro l: libros)
+        {
+            if(l.getTitulo().equalsIgnoreCase(titulo))
+            {
+                encontrado = true;
+
+                for(Autor au: l.getAutores())
+                {
+                    System.out.print(au.getNombre());
+                }
+
+            }
+        }
+        if(!encontrado)
+        {
+            throw new LibreriaExc(titulo + " No encontrado");
+        }
     }
 
 
@@ -59,4 +98,6 @@ public class Libreria {
         }
 
     }
+
+
 }
