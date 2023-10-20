@@ -93,6 +93,18 @@ public class Libro {
         this.precio = precio;
     }
 
+    public Autor buscarAutorM40()
+    {
+        for(Autor au : autores)
+        {
+            if(au.esM40())
+            {
+                return au;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         String authorsStr = autores.isEmpty() ? "Sin autores" : formatAuthors();

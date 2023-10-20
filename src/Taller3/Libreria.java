@@ -1,6 +1,10 @@
 package Taller3;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Libreria {
@@ -50,7 +54,7 @@ public class Libreria {
         int[] existencias = new int[2];
         for(Libro l: libros)
         {
-            if(l.getTitulo().equalsIgnoreCase(titulo))
+            if(l.getTitulo().trim().equalsIgnoreCase(titulo))
             {
                 encontrado = true;
                 existencias[0] = l.getExistenciaMin();
@@ -88,6 +92,51 @@ public class Libreria {
         }
     }
 
+    public void buscarAntiguedad(String fecha)
+    {
+        fecha = ManejadorCadenas.eliminarEspacios(fecha);
+        Date fechaConsulta;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+
+        fechaConsulta = ManejadorCadenas.stringFecha(fecha, "yyyy-MM-dd");
+        System.out.println("Libros publicados antes de " + sdf.format(fechaConsulta) + ":");
+
+        for(Libro l : libros)
+        {
+            if(l.getFechaPublicacion().before(fechaConsulta)){
+                System.out.println(l.getTitulo());
+            }
+        }
+
+    }
+
+    public void consultarAntiguos(int anios)throws LibreriaExc
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+        Calendar calendario = Calendar.getInstance();
+
+        calendario.add(Calendar.YEAR, -anios);
+        Date fechaLim = calendario.getTime();
+
+        boolean encontrado = false;
+
+        System.out.println("Libros publicados hace " + anios + " años o más:");
+        for(Libro l : libros)
+        {
+            if(l.getFechaPublicacion().before(fechaLim) || l.getFechaPublicacion().equals(fechaLim))
+            {
+                encontrado = true;
+                System.out.println(l.getTitulo());
+            }
+        }
+
+        if(!encontrado){
+            throw new LibreriaExc("No existen libros con esa antiguedad");
+        }
+    }
+
 
     public void mostrarLibros() throws LibreriaExc
     {
@@ -116,7 +165,7 @@ public class Libreria {
             {
                 if (au.getNacionalidad().trim().equalsIgnoreCase(nacionalidad.trim())) {
                     encontradolib = true;
-                    System.out.print(au.getNombre()+ " ");
+                    System.out.println(au.getNombre()+ " ");
                 }
             }
             if (encontradolib)
@@ -176,4 +225,28 @@ public class Libreria {
             throw new LibreriaExc(titulo + " No encontrado");
         }
     }
+
+    public List<String> AutoresM40() throws LibreriaExc
+    {
+        List <String> listaL = new ArrayList<>();
+
+        for(Libro l : libros)
+        {
+            if(l != null)
+            {
+                if(l.buscarAutorM40() != null)
+                {
+                    listaL.add(l.getTitulo());
+                }
+            }
+        }
+
+        if(listaL.isEmpty()){
+            throw new LibreriaExc("No existen libros con Autores menores a 40 anios en la base de datos");
+        }
+
+        return listaL;
+    }
+
+
 }

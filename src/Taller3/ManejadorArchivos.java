@@ -2,6 +2,7 @@ package Taller3;
 
 import java.io.*;
 import java.util.Date;
+import java.util.List;
 
 public class ManejadorArchivos {
 
@@ -47,6 +48,8 @@ public class ManejadorArchivos {
 
 
             }
+            lec.close();
+            System.out.println("Contenido leido correctamente del archivo: " + nombreArch);
 
         }catch (IOException e)
         {
@@ -86,6 +89,8 @@ public class ManejadorArchivos {
                 }
 
             }
+            lec.close();
+            System.out.println("Contenido leido correctamente del archivo: " + nomArch);
         }catch (IOException e)
         {
             e.printStackTrace();
@@ -123,6 +128,25 @@ public class ManejadorArchivos {
         catch (Exception e)
         {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public static void listaAArchivo(List<String> lista, String nomArch)
+    {
+        try
+        {
+            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(nomArch + ".txt"));
+
+            for(String titulo : lista)
+            {
+                out.write(titulo + "\n");
+            }
+
+            out.close();
+            System.out.println("Contenido de la lista escrito en el archivo: " + nomArch);
+        }catch(Exception e)
+        {
+            System.out.println("Error al escribir el archivo de reporte: " + e);
         }
     }
 }

@@ -38,6 +38,13 @@ public class Autor {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public boolean esM40() {
+        Date fechaLimite = new Date();
+        fechaLimite.setYear(fechaLimite.getYear() - 40);
+
+        return fechaNacimiento.after(fechaLimite);
+    }
+
     @Override
     public String toString() {
         return String.format("Autor: %s\n Nacionalidad: %s\n Fecha de Nacimiento: %s",

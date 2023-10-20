@@ -20,6 +20,8 @@ public class Test {
                     break;
                 }
                 case 2: {
+                    System.out.println("Presiona Enter para continuar....");
+                    ent.nextLine();
                     System.out.println("Ingrese el nombre del archivo: ");
                     String nom = ent.nextLine();
 
@@ -29,6 +31,7 @@ public class Test {
                     break;
                 }
                 case 3: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese el titulo del libro: ");
                     String titulo = ent.nextLine();
@@ -38,10 +41,11 @@ public class Test {
                     try
                     {
                         lib.venderLibro(titulo.trim(), cant);
+                        System.out.println(cant + "" + titulo + " Vendido/s con exito");
                     }
                     catch(LibreriaExc e)
                     {
-                        System.out.println(e);
+                        System.out.println("" + e);
                     }
 
 
@@ -49,13 +53,15 @@ public class Test {
                     break;
                 }
                 case 4: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese el titulo del libro: ");
                     String titulo = ent.nextLine();
 
                     try
                     {
-                        lib.verificarExistencia(titulo);
+                        int[] existencias = lib.verificarExistencia(titulo.trim().toLowerCase());
+                        System.out.println("Existencia Minima: [" + existencias[0] + "] Existencia Actual: [" + existencias[1] + "]");
                     }
                     catch(LibreriaExc e)
                     {
@@ -66,6 +72,7 @@ public class Test {
                     break;
                 }
                 case 5: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese el titulo del libro: ");
                     String titulo = ent.nextLine();
@@ -76,12 +83,13 @@ public class Test {
                     }
                     catch(LibreriaExc e)
                     {
-                        System.out.println(e);
+                        System.out.println("" + e);
                     }
 
                     break;
                 }
                 case 6: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese la nacionalidad: ");
                     String nacionalidad = ent.nextLine();
@@ -92,7 +100,7 @@ public class Test {
                     }
                     catch(LibreriaExc e)
                     {
-                        System.out.println(e);
+                        System.out.println("" + e);
                     }
 
 
@@ -108,6 +116,7 @@ public class Test {
                     break;
                 }
                 case 8: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese el nombre del autor: ");
                     String nombre = ent.nextLine();
@@ -118,12 +127,13 @@ public class Test {
                     }
                     catch(LibreriaExc e)
                     {
-                        System.out.println(e);
+                        System.out.println("" + e);
                     }
 
                     break;
                 }
                 case 9: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese el titulo: ");
                     String titulo = ent.nextLine();
@@ -134,36 +144,67 @@ public class Test {
                     }
                     catch(LibreriaExc e)
                     {
-                        System.out.println(e);
+                        System.out.println("" + e);
                     }
 
                     break;
                 }
                 case 10: {
+                    System.out.println("ingresa la fecha de Consulta: ");
+                    String fechaConsulta = ent.nextLine();
 
+                    lib.buscarAntiguedad(fechaConsulta);
 
                     break;
                 }
                 case 11: {
+                    System.out.println("Presiona Enter para continuar....");
+                    ent.nextLine();
+                    System.out.println("Ingresar el numero de años: ");
+                    int anios = ent.nextInt();
+
+                    try{
+                        lib.consultarAntiguos(anios);
+                    }catch(NullPointerException e) {
+                        System.out.println("Ingrese un numero de años");
+                    } catch (LibreriaExc e) {
+                        System.out.println("Numero de anios muy elevado " + e);
+                    }
 
 
                     break;
                 }
                 case 12: {
+                    System.out.println("Presiona Enter para continuar....");
+                    ent.nextLine();
+                    System.out.println("Ingresar el nombre del reporte");
+                    String nombreArchivo = ent.nextLine();
 
+                    try{
+                        List <String> titulosM40 = lib.AutoresM40();
+                        ManejadorArchivos.listaAArchivo(titulosM40, nombreArchivo);
+
+                    }catch(NullPointerException e)
+                    {
+                        System.out.println("Ingrese un nombre de Archivo Valido");
+                    }catch (LibreriaExc e)
+                    {
+                        System.out.println("No hay coincidencias " + e);
+                    }
 
                     break;
                 }
                 case 13: {
+                    System.out.println("Presiona Enter para continuar....");
                     ent.nextLine();
                     System.out.println("Ingrese lo que desea realizar: 'serializar'-'deserializar'");
                     String res = ent.nextLine();
-                    if(res.equalsIgnoreCase("serializar")){
+                    if(res.trim().equalsIgnoreCase("serializar")){
                         System.out.println("Ingrese el nombre del archivo a crear");
                         res = ent.nextLine();
                         System.out.println("Se guardara la libreria en un archivo...");
                         ManejadorArchivos.salvarAArchivo(res, lib);
-                    }else if(res.equalsIgnoreCase("deserializar")){
+                    }else if(res.trim().equalsIgnoreCase("deserializar")){
                         System.out.println("Ingrese el nombre del archivo");
                         res = ent.nextLine();
                         System.out.println("Se cargara la libreria desde un archivo...");

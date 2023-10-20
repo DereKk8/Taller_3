@@ -11,15 +11,16 @@ Hervé Martin *Francesa *01-04-1958
 #Titulo-------Editorial-----FechaPub-----ExMin-----Precio
 El coronel no tiene quien le escriba *Oveja Negra *2000-05-09 *5 *25000
 #Autores
-#nombre----------nacionalidad
-Gabriel García Marquez *Colombiana *06-03-1927
+#nombre----------nacionalidad---------fechaNacimiento
+Gabriel García Marquez *Colombiana       *06-03-1927
 0
 #LIBRO
 #Titulo-------Editorial-----FechaPub-----ExMin-----Precio
-Pedro Páramo *Oveja Negra *2005-12-13 *10 *20000
+Pedro Páramo   *Oveja Negra *2005-12-13   *10        *20000
 #Autores
-#nombre----------nacionalidad
-Juan Rulfo *Mexicana *16-05-1917
+#nombre----------nacionalidad---------fechaNacimiento
+Juan Rulfo         *Mexicana           *16-05-1917
+Derek Sarmiento    *Colombiana         *08-06-2003
 0
 #FIN
  
